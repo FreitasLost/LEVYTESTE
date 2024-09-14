@@ -1,0 +1,401 @@
+<html><head><base href=""><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>ModaElegante - Sua Loja de Roupas Online</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"><style>
+    :root {
+        --primary-color: #000;
+        --secondary-color: #fff;
+        --accent-color: #f0c040;
+        --text-color: #333;
+    }
+    body {
+        font-family: 'Roboto', Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+        color: var(--text-color);
+    }
+    header {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+    .logo {
+        max-height: 50px;
+        width: auto;
+    }
+    @media (max-width: 768px) {
+        header {
+            justify-content: center;
+        }
+        
+        .logo {
+            max-height: 40px;
+        }
+    }
+    nav {
+        background-color: var(--secondary-color);
+        padding: 0.5rem;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    nav a {
+        color: var(--primary-color);
+        text-decoration: none;
+        margin: 0 1rem;
+        font-weight: bold;
+        transition: color 0.3s ease;
+    }
+    nav a:hover {
+        color: var(--accent-color);
+    }
+    main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        gap: 2rem;
+    }
+    .produtos-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1.5rem;
+    }
+    .produto {
+        background-color: var(--secondary-color);
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 1rem;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .produto:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .produto img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 4px;
+    }
+    .carrinho {
+        background-color: var(--secondary-color);
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 1rem;
+        position: sticky;
+        top: 80px;
+    }
+    button {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        border: none;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+    }
+    button:hover {
+        background-color: var(--accent-color);
+        color: var(--primary-color);
+    }
+    .quantidade {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 0.5rem;
+    }
+    .quantidade button {
+        width: 30px;
+        height: 30px;
+        font-size: 1.2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+    }
+    .quantidade input {
+        width: 40px;
+        text-align: center;
+        margin: 0 0.5rem;
+    }
+    footer {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        text-align: center;
+        padding: 1rem;
+        margin-top: 2rem;
+    }
+    .social-icons {
+        margin-top: 1rem;
+    }
+    .social-icons a {
+        color: var(--secondary-color);
+        font-size: 1.5rem;
+        margin: 0 0.5rem;
+        transition: color 0.3s ease;
+    }
+    .social-icons a:hover {
+        color: var(--accent-color);
+    }
+    /* Estilos para o carrossel */
+    .carrossel {
+        position: relative;
+        width: 100%;
+        height: 400px;
+        overflow: hidden;
+        margin-bottom: 2rem;
+    }
+    .carrossel-imagem {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+    }
+    .carrossel-imagem.ativa {
+        opacity: 1;
+    }
+    .carrossel-controles {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+    }
+    .carrossel-botao {
+        background-color: rgba(255, 255, 255, 0.7);
+        border: none;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .carrossel-botao.ativo {
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+    @media (max-width: 768px) {
+        main {
+            grid-template-columns: 1fr;
+        }
+        .carrinho {
+            position: static;
+        }
+        .carrossel {
+            height: 300px;
+        }
+    }
+</style></head><body>
+    <header>
+        <img src="https://www.dropbox.com/scl/fi/ws535ut178b1mvmlbpr1x/logos.png?rlkey=asjxwipaj9faen82sg4y8stvm&dl=1" alt="ModaElegante Logo" class="logo" width="150" height="50">
+    </header>
+    <nav>
+        <a href="/">Início</a>
+        <a href="404.html">Produtos</a>
+        <a href="404.html">Categorias</a>
+        <a href="404.html">Sobre</a>
+        <a href="404.html">Contato</a>
+    </nav>
+    <div class="carrossel">
+        <img class="carrossel-imagem ativa" src="https://www.dropbox.com/scl/fi/3lpb8ei5ik6g946xzr8df/e-parcelamento-em-at-12x-sem-juros.png?rlkey=sf6lgld59x7yz2ipb5t5tk8uc&dl=1" alt="Imagem 1">
+        <img class="carrossel-imagem" src="https://www.dropbox.com/scl/fi/h1rf09vrrhylyqzal3n4x/e-parcelamento-em-at-12x-sem-jur2os.png?rlkey=v82nt3ckhqg21ziwrv0j051c6&dl=1" alt="Imagem 2">
+        <img class="carrossel-imagem" src="https://www.dropbox.com/scl/fi/3lpb8ei5ik6g946xzr8df/e-parcelamento-em-at-12x-sem-juros.png?rlkey=sf6lgld59x7yz2ipb5t5tk8uc&dl=1" alt="Imagem 3">
+        <img class="carrossel-imagem" src="https://www.dropbox.com/scl/fi/3lpb8ei5ik6g946xzr8df/e-parcelamento-em-at-12x-sem-juros.png?rlkey=sf6lgld59x7yz2ipb5t5tk8uc&dl=1" alt="Imagem 4">
+        <div class="carrossel-controles"></div>
+    </div>    
+    <main>
+        <div class="produtos-grid" id="produtos"></div>
+        <div class="carrinho">
+            <h2>Carrinho de Compras</h2>
+            <ul id="itens-carrinho"></ul>
+            <p>Subtotal: R$ <span id="subtotal">0.00</span></p>
+            <p>Frete: R$ <span id="frete">0.00</span></p>
+            <p>Imposto ICMS: R$ <span id="ICMS">0.00</span></p>
+            <p>Total: R$ <span id="total">0.00</span></p>
+            <button onclick="finalizarCompra()">Finalizar Compra</button>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Victor Pian. Todos os direitos reservados.</p>
+        <div class="social-icons">
+            <a href="https://facebook.com/modaelegante"><i class="fab fa-facebook"></i></a>
+            <a href="https://instagram.com/modaelegante"><i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com/modaelegante"><i class="fab fa-twitter"></i></a>
+        </div>
+    </footer>
+    <script>
+    const produtos = [
+        { id: 1, nome: 'Camiseta Básica', preco: 29.99, imagem: 'https://www.dropbox.com/scl/fi/9cugl2mjgwt2tsr110cnf/Design-sem-nome.png?rlkey=uq6bl35q4saegdm5tuzg5efe5&dl=1', categoria: 'Camisetas' },
+        { id: 2, nome: 'Calça Jeans', preco: 89.99, imagem: 'calca.jpg', categoria: 'Calças' },
+        { id: 3, nome: 'Vestido Elegante', preco: 129.99, imagem: 'vestido.jpg', categoria: 'Vestidos' },
+        { id: 4, nome: 'Tênis Casual', preco: 99.99, imagem: 'tenis.jpg', categoria: 'Calçados' },
+        { id: 5, nome: 'Blazer Feminino', preco: 149.99, imagem: 'blazer.jpg', categoria: 'Casacos' },
+        { id: 6, nome: 'Saia Midi', preco: 69.99, imagem: 'saia.jpg', categoria: 'Saias' },
+        { id: 7, nome: 'Camisa Social', preco: 79.99, imagem: 'camisa.jpg', categoria: 'Camisas' },
+        { id: 8, nome: 'Camisa Social', preco: 79.99, imagem: 'camisa.jpg', categoria: 'Camisas' },
+        { id: 9, nome: 'Jaqueta de Couro', preco: 199.99, imagem: 'jaqueta.jpg', categoria: 'Casacos' }
+    ];
+    const carrinho = [];
+
+    function exibirProdutos() {
+        const produtosDiv = document.getElementById('produtos');
+        produtos.forEach(produto => {
+            const produtoElement = document.createElement('div');
+            produtoElement.className = 'produto';
+            produtoElement.innerHTML = `
+                <img src="${produto.imagem}" alt="${produto.nome}" width="150" height="150">
+                <h3>${produto.nome}</h3>
+                <p>R$ ${produto.preco.toFixed(2)}</p>
+                <p>Categoria: ${produto.categoria}</p>
+                <div class="quantidade">
+                    <button onclick="diminuirQuantidade(${produto.id})">-</button>
+                    <input type="number" id="quantidade-${produto.id}" value="1" min="1" max="10">
+                    <button onclick="aumentarQuantidade(${produto.id})">+</button>
+                </div>
+                <button onclick="adicionarAoCarrinho(${produto.id})">Adicionar ao Carrinho</button>
+            `;
+            produtosDiv.appendChild(produtoElement);
+        });
+    }
+
+    function diminuirQuantidade(id) {
+        const input = document.getElementById(`quantidade-${id}`);
+        if (input.value > 1) {
+            input.value = parseInt(input.value) - 1;
+        }
+    }
+
+    function aumentarQuantidade(id) {
+        const input = document.getElementById(`quantidade-${id}`);
+        if (input.value < 10) {
+            input.value = parseInt(input.value) + 1;
+        }
+    }
+
+    function adicionarAoCarrinho(id) {
+        const produto = produtos.find(p => p.id === id);
+        const quantidade = parseInt(document.getElementById(`quantidade-${id}`).value);
+        const itemExistente = carrinho.find(item => item.id === id);
+
+        if (itemExistente) {
+            itemExistente.quantidade += quantidade;
+        } else {
+            carrinho.push({...produto, quantidade});
+        }
+        atualizarCarrinho();
+    }
+
+    function atualizarCarrinho() {
+        const itensCarrinho = document.getElementById('itens-carrinho');
+        itensCarrinho.innerHTML = '';
+        let subtotal = 0;
+
+        carrinho.forEach(item => {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                ${item.nome} - ${item.quantidade}x R$ ${item.preco.toFixed(2)}
+                <button onclick="removerDoCarrinho(${item.id})">Remover</button>
+            `;
+            itensCarrinho.appendChild(li);
+            subtotal += item.preco * item.quantidade;
+        });
+
+        const frete = calcularFrete(subtotal);
+        const ICMS = calcularICMS(subtotal);
+        const total = subtotal + frete + ICMS;
+
+        document.getElementById('subtotal').textContent = subtotal.toFixed(2);
+        document.getElementById('frete').textContent = frete.toFixed(2);
+        document.getElementById('total').textContent = total.toFixed(2);
+        document.getElementById('ICMS').textContent = ICMS.toFixed(2);
+    }
+
+    function removerDoCarrinho(id) {
+        const index = carrinho.findIndex(item => item.id === id);
+        if (index !== -1) {
+            carrinho.splice(index, 1);
+            atualizarCarrinho();
+        }
+    }
+
+    function calcularFrete(subtotal) {
+        if (subtotal >= 200) {
+            return 0;
+        } else if (subtotal >= 100) {
+            return 29;
+        }else {
+            return 34;
+        } 
+    }
+
+    function calcularICMS(subtotal) {
+        if (subtotal >= 500) {
+            return 0;
+        }else if (subtotal >= 100) {
+            return 17;
+        } else if (subtotal >= 70) {
+            return 9;
+        }else if (subtotal >= 30) {
+            return 7;
+        }else {
+            return 0;
+        } 
+    }
+
+    function finalizarCompra() {
+        if (carrinho.length === 0) {
+            alert('Seu carrinho está vazio!');
+        } else {
+            const total = parseFloat(document.getElementById('total').textContent);
+            alert(`Compra finalizada! Total: R$ ${total.toFixed(2)}\nObrigado por comprar na ModaElegante!`);
+            carrinho.length = 0;
+            atualizarCarrinho();
+        }
+    }
+
+    // Funções do carrossel
+    let imagemAtual = 0;
+    const imagens = document.querySelectorAll('.carrossel-imagem');
+    const controles = document.querySelector('.carrossel-controles');
+
+    function criarBotoesCarrossel() {
+        imagens.forEach((_, index) => {
+            const botao = document.createElement('button');
+            botao.classList.add('carrossel-botao');
+            if (index === 0) botao.classList.add('ativo');
+            botao.addEventListener('click', () => mudarImagem(index));
+            controles.appendChild(botao);
+        });
+    }
+
+    function mudarImagem(index) {
+        imagens[imagemAtual].classList.remove('ativa');
+        controles.children[imagemAtual].classList.remove('ativo');
+        imagemAtual = index;
+        imagens[imagemAtual].classList.add('ativa');
+        controles.children[imagemAtual].classList.add('ativo');
+    }
+
+    function proximaImagem() {
+        let novoIndex = (imagemAtual + 1) % imagens.length;
+        mudarImagem(novoIndex);
+    }
+
+    function iniciarCarrossel() {
+        criarBotoesCarrossel();
+        setInterval(proximaImagem, 5000);
+    }
+
+    window.onload = function() {
+        exibirProdutos();
+        iniciarCarrossel();
+    };
+    </script>
+</body>
+</html>
